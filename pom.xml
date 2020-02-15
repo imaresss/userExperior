@@ -7,7 +7,7 @@
 	<groupId>com.example</groupId>
 	<artifactId>graphql</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>graphql</name>
+	<name>ue</name>
 	<description>Demo project for Spring Boot</description>
 	<packaging>war</packaging>
 	<properties>
@@ -80,30 +80,34 @@
 			<artifactId>postgresql</artifactId>
 			<version>42.2.8</version>
 		</dependency>
-		
-		<!-- https://mvnrepository.com/artifact/com.graphql-java/graphql-java -->
-<!-- https://mvnrepository.com/artifact/com.graphql-java/graphql-java -->
-<dependency>
-    <groupId>com.graphql-java</groupId>
-    <artifactId>graphql-java</artifactId>
-    <version>8.0</version>
-</dependency>
+		<dependency>
+			<groupId>org.mongodb</groupId>
+			<artifactId>mongo-java-driver</artifactId>
+			<version>3.9.0</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.github.ziplet</groupId>
+			<artifactId>ziplet</artifactId>
+			<version>2.4.1</version>
+		</dependency>
 
-		
-		<!-- https://mvnrepository.com/artifact/com.graphql-java/graphql-java-tools -->
-<dependency>
-    <groupId>com.graphql-java</groupId>
-    <artifactId>graphql-java-tools</artifactId>
-    <version>5.1.0</version>
-</dependency>
+		<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1.1</version>
+		</dependency>
 
-		
-		
+
+
+
+
+
 	</dependencies>
 
 	<build>
 
-		<finalName>graphql</finalName>
+		<finalName>ue</finalName>
 		<pluginManagement>
 			<plugins>
 				<plugin>
@@ -112,7 +116,7 @@
 					<version>3.2.2</version>
 					<configuration>
 						<warSourceDirectory>src/main/webapp</warSourceDirectory>
-						<warName>graphql</warName>
+						<warName>ue</warName>
 						<failOnMissingWebXml>false</failOnMissingWebXml>
 					</configuration>
 				</plugin>

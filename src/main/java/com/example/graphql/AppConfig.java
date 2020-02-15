@@ -7,6 +7,8 @@ import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import javax.servlet.Filter;
+
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -21,6 +23,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import com.github.ziplet.filter.compression.CompressingFilter;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
+import com.mongodb.client.MongoDatabase;
 
 @Configuration
 @EnableWebMvc
@@ -37,15 +44,39 @@ public class AppConfig implements WebMvcConfigurer {
 //		return APPLICATION_KEY;
 //	}
 
-	  @Bean
-	    public DataSource getDataSource() {
-		  DataSource source = new DataSource();
-		  source.setDriverClassName("org.postgresql.Driver");
-		  source.setUrl("jdbc:postgresql://womaniya-test.chlaevmryxtx.ap-south-1.rds.amazonaws.com:5432/womaniya_master");
-	       source.setUsername("testwomaniya");
-	       source.setPassword("testwomaniyaconew");
-	        return source;
-	    }
+	@Bean
+	public DataSource getDataSource() {
+		DataSource source = new DataSource();
+		source.setDriverClassName("org.postgresql.Driver");
+		source.setUrl("");
+		source.setUsername("");
+		source.setPassword("");
+		return source;
+	}
+	
+	@Bean(name = "ugcMongo")
+	public MongoDatabase getDataBaseConnection() {
+		// PojoCodecProvider pojoCodecProvider =
+		// PojoCodecProvider.builder().automatic(true).build();
+		// CodecProvider pojoCodecProvider =
+		// PojoCodecProvider.builder().register("co.womaniya.video.models").build();
+
+		// CodecRegistry pojoCodecRegistry =
+		// fromRegistries(MongoClient.getDefaultCodecRegistry(),
+		// fromProviders(pojoCodecProvider));
+
+		MongoClientURI mongoClientURI = new MongoClientURI("mongodb://ec2-15-206-178-19.ap-south-1.compute.amazonaws.com");
+		MongoDatabase database = new MongoClient(mongoClientURI).getDatabase("user_experior");
+
+		return database;
+
+	}
+
+	@Bean
+	public Filter compressingFilter() {
+		CompressingFilter compressingFilter = new CompressingFilter();
+		return compressingFilter;
+	}
 //	@Bean(name = "readDataSources")
 //	public List<DataSource> getWomaniyaReadReplicaMasterDs() {
 //		List<DataSource> dataSource = getDsLocator().getWomaniyaReadReplicaMasterDs();
@@ -57,8 +88,5 @@ public class AppConfig implements WebMvcConfigurer {
 	 * getWomaniyaReadReplicaMasterDs() { DataSource dataSource =
 	 * getDsLocator().getWomaniyaReadReplicaMasterDs(); return dataSource; }
 	 */
-
-
-
 
 }
