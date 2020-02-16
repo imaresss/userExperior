@@ -1,4 +1,4 @@
-This is a Spring Mvc project
+This is a Spring Mvc project .
 I have used Mongodb to store the data .. I could have used rdbms like psql , but it is time consuming to write queries for
 jsonb in psql so i have used monogdb just because of quicker submission .
 I have used Apache tomcat for spring deployment .
