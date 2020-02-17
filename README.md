@@ -1,4 +1,10 @@
 This is a Spring Mvc project .
+
+Spring server 
+COmmand  - ssh -X ue@ec2-13-233-230-116.ap-south-1.compute.amazonaws.com
+password - ue@4321
+
+
 I have used Mongodb to store the data .. I could have used rdbms like psql , but it is time consuming to write queries for
 jsonb in psql so i have used monogdb just because of quicker submission .
 I have used Apache tomcat for spring deployment .
