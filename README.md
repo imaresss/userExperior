@@ -1,7 +1,10 @@
 This is a Spring Mvc project .
 
 Spring server 
+
+
 COmmand  - ssh -X ue@ec2-13-233-230-116.ap-south-1.compute.amazonaws.com
+
 password - ue@4321
 
 
